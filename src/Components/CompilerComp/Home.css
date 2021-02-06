@@ -1,0 +1,19 @@
+.container__compiler
+{
+    display: flex;
+}
+.vertical__split
+{
+    display: flex;
+}
+.horizontal__split
+{
+    display: flex;
+    flex-direction: column;
+}
+.questions
+{
+   
+   
+    color: white;
+}

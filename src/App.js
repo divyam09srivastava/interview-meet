@@ -1,11 +1,11 @@
 import './App.css';
 import React from 'react';
-import Header from "./Components/HeaderComp/Header";
+import Home from "./Components/CompilerComp/Home";
 
 
 function App() {
   return (
-        <Header />
+        <Home />
   );
 }
 
