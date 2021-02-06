@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from "./images/interview-meet-logo.PNG";
+import logo from "../images/interview-meet-logo.PNG";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
