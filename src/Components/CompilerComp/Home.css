@@ -2,14 +2,18 @@
 {
     display: flex;
 }
-.vertical__split
-{
-    display: flex;
-}
-.horizontal__split
+
+.source__code
 {
     display: flex;
     flex-direction: column;
+    
+}
+.horizontal__flex
+{
+    display: flex;
+    
+    max-width: 85vw;
 }
 .questions
 {

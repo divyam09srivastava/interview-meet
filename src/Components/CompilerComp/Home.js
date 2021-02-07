@@ -215,27 +215,24 @@ $("#source").focus();
         </AppBar>
       </div>
         <div className="container__compiler">
-            <div className="vertical__split">
-        <div className="questions">
-          <textarea rows="32" cols="20" style={{resize:"horizontal" , background:"black",color:"white",fontFamily:"Montserrat",fontSize:"20px"}}>
+        
+          <textarea  style={{width:"15vw",height:"91vh", maxHeight:"91vh",minWidth:"10vw",resize:"none", background:"black",color:"white",fontFamily:"Montserrat",fontSize:"20px"}}>
                 Question Goes Here
           </textarea>
-        </div>
-        <div className="Source__code">
-          <textarea id="source" rows="32" cols="105"  style={{resize:"horizontal" , background:"black",color:"white",fontFamily:"Montserrat",fontSize:"20px"}}>
-              Source code goes here
+       
+          <div className="source__code">
+          <textarea id="source" style={{width:"85vw",height:"70vh",maxHeight:"70vh",minWidth:"70vw",maxWidth:"85vw",resize:"none",background:"black",color:"white",fontFamily:"Montserrat",fontSize:"20px"}}>
+          print("Hello world");
           </textarea>
 
-        </div>
-        </div>
-        <div  className="horizontal__split">
-        <div className="std__input">
-        <textarea id ="input" rows="14" cols="40" style={{resize:"vertical" , background:"black",color:"white",fontFamily:"Montserrat",fontSize:"20px"}}>
+        
+        
+        <div className="horizontal__flex">
+        <textarea id ="input" style={{width:"25vw",height:"20vh",minWidth:"25vw" ,background:"black",color:"white",fontFamily:"Montserrat",fontSize:"20px",resize:"horizontal"}}>
             Std:input goes here
         </textarea>
-        </div>
-        <div className="std__output">
-        <textarea readonly id="output"rows="16" cols="40" style={{resize:"vertcial" , background:"black",color:"white",fontFamily:"Montserrat",fontSize:"20px"}}>
+     
+        <textarea readOnly id="output" style={{width:"60vw",height:"20vh", background:"black",color:"white",fontFamily:"Montserrat",fontSize:"20px",resize:"none"}}>
             
         </textarea>
         </div>
