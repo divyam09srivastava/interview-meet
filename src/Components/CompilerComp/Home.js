@@ -13,7 +13,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import $ from 'jquery';
-
+import useEventListener from '@use-it/event-listener'
 
 const useStyles = makeStyles((theme) => ({
     
@@ -141,11 +141,24 @@ function run() {
     });
 }
 
-$("body").keydown(function (e) {
-    if (e.ctrlKey && e.keyCode == 13) {
-        run();
+// $("body").keydown(function (e) {
+//     if (e.ctrlKey && e.keyCode == 13) {
+//         run();
+//     }
+// });
+
+const ESCAPE_KEYS = ['27', 'Escape'];
+
+
+  function handler({ key }) {
+    if (ESCAPE_KEYS.includes(String(key))) {
+        {
+            run();
+        }
     }
-});
+  }
+
+  useEventListener('keydown', handler);
 
 $("textarea").keydown(function (e) {
     if (e.keyCode == 9) {
