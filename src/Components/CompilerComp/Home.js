@@ -108,6 +108,24 @@ useEffect(() => {
 },Random());
 
 
+
+const fetchdatapickaone = async () => {
+    const RandomNumber = Random(); 
+  
+  
+  await firebase.db
+    .collection("questions")
+    .where("id", "==", `${RandomNumber}`)
+    .get()
+    .then((querySnapshot) => {
+       data = querySnapshot.docs.map((doc) => doc.data());
+       console.log(data);
+      // console.log(data[0]);
+      console.log(RandomNumber);
+       setQuestion(data[0]);
+    });
+};
+
   
 
     const handleClose = () => {
@@ -267,7 +285,7 @@ $("#source").focus();
       </Typography>
       <Button className={classes.btn1}>Download Source Code</Button>
       <Button id="run" onClick={run} className={classes.btn}>RUN</Button>
-      <Button  className={classes.btn2}>Pick a One</Button>
+      <Button  onClick={fetchdatapickaone} className={classes.btn2}>Pick a One</Button>
           </Toolbar>
           
         </AppBar>
