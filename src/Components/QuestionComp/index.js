@@ -45,9 +45,18 @@ export default function MultilineTextFields() {
     output,
     exp
       );
+
+      setTitle("");
+      setQuestion("");
+      setLevel("");
+      setOutput("");
+      setInput("");
+      setExp("");
     } catch (error) {
       alert(error.message);
     }
+
+
   }
  
 
