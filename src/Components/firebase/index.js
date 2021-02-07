@@ -39,6 +39,7 @@ class Firebase {
 //   }
 
   addQuestion(
+    id,
     title,
     level,
     question,
@@ -48,6 +49,7 @@ class Firebase {
     explanation,
   ) {
     const data = {
+        id,
         title,
         level,
         question,

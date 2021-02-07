@@ -1,6 +1,6 @@
 import "./Home.css";
 
-import React from 'react'
+import React ,{useEffect} from 'react'
 import logo from "../images/interview-meet-logo.PNG";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -12,9 +12,10 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
-import $ from 'jquery';
+import $, { error } from 'jquery';
 import useEventListener from '@use-it/event-listener'
-
+import firebase from "../firebase";
+import db from '../firebase';
 const useStyles = makeStyles((theme) => ({
     
     formControl: {
@@ -40,6 +41,13 @@ const useStyles = makeStyles((theme) => ({
         marginRight:"10px",
         background:"white",float:"right"
 
+    },
+    btn2 :
+    {
+      color:"white", fontFamily:"Montserrat",
+        marginLeft:"10px",
+        marginRight:"10px",
+        background:"cyan"
     }
   }));
 
@@ -48,11 +56,60 @@ const Home=() => {
     const classes = useStyles();
     const [lang, setLang] = React.useState('');
     const [open, setOpen] = React.useState(false);
-  
+    const [question,setQuestion] = React.useState([]);
     const handleChange = (event) => {
       setLang(event.target.value);
     };
+
+    const Random = () =>{
+      var RandomNumber = Math.floor(Math.random() * 4) + 1 ;
+      return RandomNumber
+    }
+  //   const fetchQuestion=async()=>{
+        
+  //       // var RandomNumber = Math.floor(Math.random() * 4) + 1 ;
+  //       // var sizeofdata= snapshot.numChildren();
+  //       setQuestion = 
+  // db.collection('questions')
+  // .doc('1');
+        
+  //     }
+  //     useEffect(() => {
+  //       fetchQuestion();
+  //     }, [])
+  //   var data="";
+//   db.ref('questions').once('value').then(function(snapshot)
+//   {
+//       const exist= (snapshot.val() !=null);
+
+//       if(exist) data= snapshot.val();
+//       console.log('Single Value ', data);
+//   }).catch(error=> console.log(error));
+var data
+useEffect(() => {
+  const RandomNumber = Random();
+  const fetchdata = async () => {
+    
+    
+    
+    await firebase.db
+      .collection("questions")
+      .where("id", "==", `${RandomNumber}`)
+      .get()
+      .then((querySnapshot) => {
+         data = querySnapshot.docs.map((doc) => doc.data());
+         console.log(data);
+        // console.log(data[0]);
+        console.log(RandomNumber);
+         setQuestion(data[0]);
+      });
+  };
+  fetchdata();
+},Random());
+
+
   
+
     const handleClose = () => {
       setOpen(false);
     };
@@ -210,15 +267,23 @@ $("#source").focus();
       </Typography>
       <Button className={classes.btn1}>Download Source Code</Button>
       <Button id="run" onClick={run} className={classes.btn}>RUN</Button>
+      <Button  className={classes.btn2}>Pick a One</Button>
           </Toolbar>
           
         </AppBar>
       </div>
         <div className="container__compiler">
-        
-          <textarea  style={{width:"15vw",height:"91vh", maxHeight:"91vh",minWidth:"10vw",resize:"none", background:"black",color:"white",fontFamily:"Montserrat",fontSize:"20px"}}>
-                Question Goes Here
-          </textarea>
+          
+          <div style={{width:"15vw",height:"91vh", maxHeight:"91vh",minWidth:"10vw", background:"black",color:"white",fontFamily:"Montserrat",fontSize:"20px"}}>
+           <h3>{question.title}</h3> 
+          <p style={{color:"green"}}>{question.level}</p>
+          
+          <p> Question : {question.question} </p>
+          <p>Example:</p>
+          <p>Input1 : {question.input}</p>
+          <p>Output : {question.output}</p>
+          <p>Explanation : {question.explanation}</p>
+          </div>
        
           <div className="source__code">
           <textarea id="source" style={{width:"85vw",height:"70vh",maxHeight:"70vh",minWidth:"70vw",maxWidth:"85vw",resize:"none",background:"black",color:"white",fontFamily:"Montserrat",fontSize:"20px"}}>

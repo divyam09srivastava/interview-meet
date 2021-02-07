@@ -24,6 +24,7 @@ export default function MultilineTextFields() {
 //     output,
 //     explanation,
 //     testcases
+  const [id, setId] = React.useState("");
   const [title, setTitle] = React.useState("");
   const [level, setLevel] = React.useState("");
   const [question, setQuestion] = React.useState("");
@@ -37,6 +38,7 @@ export default function MultilineTextFields() {
   async function onSubmit() {
     try {
       await firebase.addQuestion(
+        id,
         title,
     level,
     question,
@@ -45,9 +47,11 @@ export default function MultilineTextFields() {
     output,
     exp
       );
-
+      setId("");
       setTitle("");
+      
       setQuestion("");
+      setCategory("");
       setLevel("");
       setOutput("");
       setInput("");
@@ -65,6 +69,15 @@ export default function MultilineTextFields() {
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <div>
+      <TextField
+          id="standard-multiline-flexible"
+          label="Multiline"
+          multiline
+          placeholder="Id"
+          rowsMax={4}
+          value={id}
+          onChange={(e)=>{setId(e.target.value)}}
+        />
         <TextField
           id="standard-multiline-flexible"
           label="Multiline"
@@ -74,6 +87,8 @@ export default function MultilineTextFields() {
           value={title}
           onChange={(e)=>{setTitle(e.target.value)}}
         />
+
+           
         <TextField
           id="standard-textarea"
           label="Multiline Placeholder"
@@ -90,6 +105,15 @@ export default function MultilineTextFields() {
           placeholder="Question"
           value={question}
           onChange={(e)=>{setQuestion(e.target.value)}}
+        />
+         <TextField
+          id="standard-multiline-flexible"
+          label="Multiline"
+          multiline
+          placeholder="Category"
+          rowsMax={4}
+          value={category}
+          onChange={(e)=>{setCategory(e.target.value)}}
         />
       </div>
       <div>
