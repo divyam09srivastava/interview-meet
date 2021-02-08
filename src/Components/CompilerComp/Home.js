@@ -16,6 +16,8 @@ import $, { error } from 'jquery';
 import useEventListener from '@use-it/event-listener'
 import firebase from "../firebase";
 import db from '../firebase';
+import TextEditContainer from '../texteditcontainer.js';
+
 const useStyles = makeStyles((theme) => ({
     
     formControl: {
@@ -302,11 +304,11 @@ $("#source").focus();
           <p>Output : {question.output}</p>
           <p>Explanation : {question.explanation}</p>
           </div>
-       
-          <div className="source__code">
+          <TextEditContainer />
+          {/* <div className="source__code">
           <textarea id="source" style={{width:"85vw",height:"70vh",maxHeight:"70vh",minWidth:"70vw",maxWidth:"85vw",resize:"none",background:"black",color:"white",fontFamily:"Montserrat",fontSize:"20px"}}>
           print("Hello world");
-          </textarea>
+          </textarea> */}
 
         
         
@@ -320,7 +322,7 @@ $("#source").focus();
         </textarea>
         </div>
         </div>
-        </div>
+        
         </>
     );
 };
