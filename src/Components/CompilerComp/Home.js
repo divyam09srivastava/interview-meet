@@ -16,7 +16,11 @@ import $, { error } from 'jquery';
 import useEventListener from '@use-it/event-listener'
 import firebase from "../firebase";
 import db from '../firebase';
-import TextEditContainer from '../texteditcontainer.js';
+
+import ScriptTag from 'react-script-tag';
+import  "../../../node_modules/socket.io-client/dist/socket.io.js"
+import io from "socket.io-client"
+
 
 const useStyles = makeStyles((theme) => ({
     
@@ -89,6 +93,10 @@ const Home=() => {
 //   }).catch(error=> console.log(error));
 var data
 useEffect(() => {
+
+
+  
+
   const RandomNumber = Random();
   const fetchdata = async () => {
     
@@ -106,9 +114,42 @@ useEffect(() => {
          setQuestion(data[0]);
       });
   };
-  fetchdata();
+
+
+
+  const clientsocketConnection =  () => {
+  
+  console.log("HEllo bois")
+  var socket = io('http://localhost:3000', {transports: ['websocket', 'polling', 'flashsocket']});
+console.log(socket)
+const l = console.log
+function getEl(id) {
+    return document.getElementById(id)
+}
+const editor = getEl("source")
+editor.addEventListener("keyup", (evt) => {
+    const text = editor.value
+    socket.send(text)
+})
+socket.on('message', (data) => {
+    editor.value = data
+})
+
+};
+
+
+clientsocketConnection();
+fetchdata();
 },Random());
 
+
+// const Demo = props => (
+//   <div>
+//   <ScriptTag type="text/javascript" src="../../client.js" />
+  
+//   <ScriptTag type="text/javascript" src="./node_modules/socket.io-client/dist/socket.io.js"/>
+//   </div>
+//   )
 
 
 const fetchdatapickaone = async () => {
@@ -304,11 +345,12 @@ $("#source").focus();
           <p>Output : {question.output}</p>
           <p>Explanation : {question.explanation}</p>
           </div>
-          <TextEditContainer />
-          {/* <div className="source__code">
+          
+          <div className="source__code">
           <textarea id="source" style={{width:"85vw",height:"70vh",maxHeight:"70vh",minWidth:"70vw",maxWidth:"85vw",resize:"none",background:"black",color:"white",fontFamily:"Montserrat",fontSize:"20px"}}>
-          print("Hello world");
-          </textarea> */}
+          
+          </textarea>
+
 
         
         
@@ -322,8 +364,19 @@ $("#source").focus();
         </textarea>
         </div>
         </div>
-        
+        </div>
+
+        <>
+
+        {/* <ScriptTag type="text/javascript" src="../../../node_modules/socket.io-client/dist/socket.io.js"/> */}
+    
+  
+  
+      </>
+
         </>
+        
     );
+    
 };
 export default Home;
