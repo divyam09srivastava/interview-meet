@@ -1,7 +1,7 @@
 import "./Home.css";
 
 import React ,{useEffect} from 'react'
-import logo from "../images/interview-meet-logo.PNG";
+import logo from "../images/interview-meet-logo-rev.png";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -39,13 +39,14 @@ const useStyles = makeStyles((theme) => ({
     {
         marginLeft:"10px",
         marginRight:"10px",
-        fontFamily:"Montserrat"
+        fontFamily:"Montserrat",
+        fontSize:"15px"
     },
     btn1: {
-        color:"black", fontFamily:"Montserrat",
+        color:"white", fontFamily:"Montserrat",
         marginLeft:"10px",
         marginRight:"10px",
-        background:"white",float:"right"
+        background:"green",float:"right"
 
     },
     btn2 :
@@ -53,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
       color:"white", fontFamily:"Montserrat",
         marginLeft:"10px",
         marginRight:"10px",
-        background:"cyan"
+        background:"green"
     }
   }));
 
@@ -303,7 +304,7 @@ $("#source").focus();
         <div className="root">
         <AppBar position="static" style={{background:"black" , display:"flex"}}>
           <Toolbar>
-           <img src={logo} className="navbar__logo"></img>
+           <img edge="start" src={logo} className="navbar__logo"></img>
            <FormControl className={classes.formControl}>
            <InputLabel id="demo-controlled-open-select-label" style={{color:"white",fontFamily:"Montserrat",marginRight:"10px",marginLeft:"10px"}}>Language</InputLabel>
         <Select
@@ -329,6 +330,9 @@ $("#source").focus();
       <Button className={classes.btn1}>Download Source Code</Button>
       <Button id="run" onClick={run} className={classes.btn}>RUN</Button>
       <Button  onClick={fetchdatapickaone} className={classes.btn2}>Pick a One</Button>
+      <Typography variant="h6" style={{fontSize:"13px", flexGrow:1, float:"right"}}>
+        Developed by-: DJ, DS, TK
+      </Typography>
           </Toolbar>
           
         </AppBar>

@@ -1,34 +1,26 @@
-.container__compiler
-{
-    display: flex;
+.container__compiler {
+  display: flex;
 }
 
-.source__code
-{
-    display: flex;
-    flex-direction: column;
-    
+.source__code {
+  display: flex;
+  flex-direction: column;
 }
-.horizontal__flex
-{
-    display: flex;
-    
-    max-width: 85vw;
+.horizontal__flex {
+  display: flex;
+
+  max-width: 85vw;
 }
-.questions
-{
-   
-   
-    color: white;
+.questions {
+  color: white;
 }
 
 .menuButton {
-    margin-right: 5px;
-  }
-  .navbar__logo
-  {
-      width: 10%;
-      margin-left: 10px;
-      margin-right: 10px;
-      object-fit: contain;
-  }
+  margin-right: 5px;
+}
+.navbar__logo {
+  width: 10%;
+  margin-right: 10px;
+  margin-top: 5px;
+  object-fit: contain;
+}
