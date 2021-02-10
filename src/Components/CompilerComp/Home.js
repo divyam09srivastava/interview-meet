@@ -120,7 +120,7 @@ useEffect(() => {
   const clientsocketConnection =  () => {
   
   console.log("HEllo bois")
-  var socket = io('http://localhost:3000', {transports: ['websocket', 'polling', 'flashsocket']});
+  var socket = io('https://shielded-caverns-62222.herokuapp.com/', {transports: ['websocket', 'polling', 'flashsocket']});
 console.log(socket)
 const l = console.log
 function getEl(id) {
