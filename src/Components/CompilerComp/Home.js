@@ -296,7 +296,15 @@ $("#source").focus();
 
 
 
-
+ function downloadTxtFile()  {
+  const element = document.createElement("a");
+  const file = new Blob([document.getElementById('source').value],    
+              {type: 'text/plain;charset=utf-8'});
+  element.href = URL.createObjectURL(file);
+  element.download = "myFile.txt";
+  document.body.appendChild(element);
+  element.click();
+}
 
 
     return (
@@ -327,7 +335,7 @@ $("#source").focus();
       <Typography variant="h6" className={classes.title}>
          Drawing Board
       </Typography>
-      <Button className={classes.btn1}>Download Source Code</Button>
+      <Button onClick={downloadTxtFile} className={classes.btn1}>Download Source Code</Button>
       <Button id="run" onClick={run} className={classes.btn}>RUN</Button>
       <Button  onClick={fetchdatapickaone} className={classes.btn2}>Pick a One</Button>
       <Typography variant="h6" style={{fontSize:"13px", flexGrow:1, float:"right"}}>
